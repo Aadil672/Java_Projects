@@ -1,5 +1,6 @@
 package com.aadilanalytics.www;
 
+import java.security.SecureRandom;
 //Java code to explain how to generate OTP
 //Here we are using random() method of util class in Java
 import java.util.*;
@@ -24,7 +25,7 @@ public class MyClass {
 		String numbers = "0123456789";
 
 		// Using random method
-		Random rndm_method = new Random();
+		SecureRandom rndm_method = new SecureRandom();
 
 		char[] otp = new char[len];
 
@@ -44,3 +45,39 @@ public class MyClass {
 		System.out.println(OTP(length));
 	}
 }
+
+/* Note:
+ * 
+Class SecureRandom
+
+java.lang.Object
+ java.util.Random
+ java.security.SecureRandom
+ 
+ 
+ 
+All Implemented Interfaces:Serializable
+
+public class SecureRandom
+extends Random
+
+This class provides a cryptographically strong random number generator (RNG). 
+A cryptographically strong random number minimally complies with the statistical random number generator tests specified in FIPS 140-2, Security Requirements for Cryptographic Modules, section 4.9.1. Additionally, SecureRandom must produce non-deterministic output. Therefore any seed material passed to a SecureRandom object must be unpredictable, and all SecureRandom output sequences must be cryptographically strong, as described in RFC 1750: Randomness Recommendations for Security. 
+
+A caller obtains a SecureRandom instance via the no-argument constructor or one of the getInstance methods: 
+      SecureRandom random = new SecureRandom();
+ 
+
+Many SecureRandom implementations are in the form of a pseudo-random number generator (PRNG), which means they use a deterministic algorithm to produce a pseudo-random sequence from a true random seed. Other implementations may produce true random numbers, and yet others may use a combination of both techniques. 
+
+Typical callers of SecureRandom invoke the following methods to retrieve random bytes: 
+      SecureRandom random = new SecureRandom();
+      byte bytes[] = new byte[20];
+      random.nextBytes(bytes);
+ 
+
+Callers may also invoke the generateSeed method to generate a given number of seed bytes (to seed other random number generators, for example): 
+      byte seed[] = random.generateSeed(20);
+ 
+Note: Depending on the implementation, the generateSeed and nextBytes methods may block as entropy is being gathered, for example, if they need to read from /dev/random on various Unix-like operating systems.
+ */
